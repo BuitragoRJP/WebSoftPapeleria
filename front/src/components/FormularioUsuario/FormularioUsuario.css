@@ -50,3 +50,16 @@
   gap: 10px;
   margin-top: 6px;
 }
+
+.formulario-usuario__error {
+  margin: 0;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--peligro);
+}
+
+.formulario-usuario__ayuda {
+  font-size: 11px;
+  font-weight: normal;
+  color: #555;
+}

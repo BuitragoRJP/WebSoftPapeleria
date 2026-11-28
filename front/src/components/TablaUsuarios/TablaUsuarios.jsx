@@ -1,10 +1,11 @@
 import BotonAccion from "../BotonAccion";
+import Etiqueta from "../Etiqueta";
 import "./TablaUsuarios.css";
 
 export default function TablaUsuarios({
   usuarios,
   onEditar = () => {},
-  onEliminar = () => {},
+  onCambiarEstado = () => {},
 }) {
   return (
     <table className="tabla tabla-usuarios">
@@ -12,10 +13,10 @@ export default function TablaUsuarios({
         <tr>
           <th>ID</th>
           <th>NOMBRE</th>
-          <th>USUARIO</th>
-          <th>CORREO</th>
+          <th>TELÉFONO (ACCESO)</th>
           <th>ROL</th>
-          <th>PRIVILEGIO</th>
+          <th>PRIVILEGIOS (QUÉ PUEDE VER)</th>
+          <th>ESTADO</th>
           <th>ACCIONES</th>
         </tr>
       </thead>
@@ -24,10 +25,21 @@ export default function TablaUsuarios({
           <tr key={usuario.id}>
             <td>{usuario.id}</td>
             <td>{usuario.nombre}</td>
-            <td>{usuario.usuario}</td>
-            <td>{usuario.correo}</td>
+            <td>{usuario.telefono}</td>
             <td>{usuario.rol}</td>
-            <td>{usuario.privilegio}</td>
+            <td>
+              <div className="tabla-usuarios__etiquetas">
+                {usuario.privilegios.map((privilegio) => (
+                  <Etiqueta key={privilegio} texto={privilegio} variante="azul" />
+                ))}
+              </div>
+            </td>
+            <td>
+              <Etiqueta
+                texto={usuario.estado}
+                variante={usuario.estado === "Activo" ? "verde" : "gris"}
+              />
+            </td>
             <td>
               <div className="tabla-usuarios__acciones">
                 <BotonAccion
@@ -36,9 +48,9 @@ export default function TablaUsuarios({
                   onClick={() => onEditar(usuario.id)}
                 />
                 <BotonAccion
-                  texto="Eliminar"
-                  variante="naranja"
-                  onClick={() => onEliminar(usuario.id)}
+                  texto={usuario.estado === "Activo" ? "Desactivar" : "Reactivar"}
+                  variante={usuario.estado === "Activo" ? "naranja" : "azul"}
+                  onClick={() => onCambiarEstado(usuario.id)}
                 />
               </div>
             </td>

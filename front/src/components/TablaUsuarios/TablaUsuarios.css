@@ -13,3 +13,10 @@
   justify-content: center;
   gap: 8px;
 }
+
+.tabla-usuarios__etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}

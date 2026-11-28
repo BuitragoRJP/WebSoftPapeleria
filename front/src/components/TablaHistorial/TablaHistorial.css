@@ -1,0 +1,9 @@
+.tabla-historial {
+  width: 90%;
+  margin: 20px auto 0;
+}
+
+.tabla-historial th,
+.tabla-historial td {
+  padding: 12px 10px;
+}

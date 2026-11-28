@@ -6,6 +6,8 @@ export default function BarraFiltros({
   fechaFin,
   fechaMinima,
   fechaMaxima,
+  textoGenerar = "Generar reporte",
+  children,
   onCambiarInicio = () => {},
   onCambiarFin = () => {},
   onGenerar = () => {},
@@ -36,8 +38,8 @@ export default function BarraFiltros({
           onChange={(e) => onCambiarFin(e.target.value)}
         />
       </label>
-
-      <BotonAccion texto="Generar reporte" variante="azul" onClick={onGenerar} />
+      {children}
+      <BotonAccion texto={textoGenerar} variante="azul" onClick={onGenerar} />
       <BotonAccion texto="Descargar PDF" variante="verde" onClick={onDescargarPdf} />
     </div>
   );

@@ -1,0 +1,12 @@
+.filtro-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.filtro-select__lista {
+  border: none;
+  padding: 8px 10px;
+  font-size: 12px;
+}
